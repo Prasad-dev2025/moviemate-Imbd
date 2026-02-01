@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="style.css">
+  <title>Moviemate</title>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+      <a class="navbar-brand" href="#">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/IMDB_Logo_2016.svg" alt="IMDb" width="60">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="menuDropdown">
+              <i class="bi bi-list"></i>Menu</a>
+          </li>
+          <div class="search-group">
+            <div class="dropdown">
+              <button class="dropdown-toggle" id="allDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+               <Strong>All</Strong>
+              </button>
+              <ul class="dropdown-menu " aria-labelledby="allDropdown">
+                <li><a class="dropdown-item" href="#">Titles</a></li>
+                <li><a class="dropdown-item" href="#">TV Episodes</a></li>
+                <li><a class="dropdown-item" href="#">Celebs</a></li>
+                <li><a class="dropdown-item" href="#">Keywords</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Companies</a></li>
+                <li><a class="dropdown-item" href="#">Advanced Search</a></li>
+              </ul>
+            </div>
+
+            <input class="form-control" type="search" placeholder="Search IMDb">
+
+            <button class="btn btn-outline-light">
+              <i class="bi bi-search"></i>
+            </button>
+          </div>
+
+          <li class="nav-item"><a class="nav-link imdb-pro" href="#">IMDb</a></li>
+          <li class="nav-item"><a class="nav-link" href="#top-movies"><i
+                class="bi bi-bookmark-plus-fill"></i>Watchlist</a></li>
+          <li class="nav-item"><a class="nav-link" href="#" id="signin-link">Sign in</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#"
+              id="languageDropdown">
+              EN
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+              <li><a class="dropdown-item" href="#">English (EN)</a></li>
+              <li><a class="dropdown-item" href="#">Spanish (ES)</a></li>
+              <li><a class="dropdown-item" href="#">French (FR)</a></li>
+              <li><a class="dropdown-item" href="#">German (DE)</a></li>
+              <li><a class="dropdown-item" href="#">Hindi (HI)</a></li>
+              <li><a class="dropdown-item" href="#">Japanese (JA)</a></li>
+              <li><a class="dropdown-item" href="#">Korean (KO)</a></li>
+              <li><a class="dropdown-item" href="#">Portuguese (PT)</a></li>
+              <li><a class="dropdown-item" href="#">Chinese (ZH)</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">More Languages...</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- MENU OVERLAY - ADD THIS SECTION -->
+  <div class="menu-overlay" id="menuOverlay">
+    <div class="menu-header">
+      <div class="menu-logo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/IMDB_Logo_2016.svg" alt="IMDb" width="60">
+      </div>
+      <button class="menu-close" onclick="closeMenu()">
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </div>
+
+    <div class="menu-content">
+      <div class="menu-grid">
+
+        <!-- Movies Section -->
+        <div class="menu-section">
+          <h3 class="menu-section-title">Movies</h3>
+          <ul class="menu-list">
+            <li><a href="#">Release Calendar</a></li>
+            <li><a href="#">Top 250 Movies</a></li>
+            <li><a href="#">Most Popular Movies</a></li>
+            <li><a href="#">Browse Movies by Genre</a></li>
+            <li><a href="#">Top Box Office</a></li>
+            <li><a href="#">Showtimes & Tickets</a></li>
+            <li><a href="#">Movie News</a></li>
+            <li><a href="#">India Movie Spotlight</a></li>
+          </ul>
+        </div>
+
+        <!-- TV Shows Section -->
+        <div class="menu-section">
+          <h3 class="menu-section-title">TV Shows</h3>
+          <ul class="menu-list">
+            <li><a href="#">What's on TV & Streaming</a></li>
+            <li><a href="#">Top 250 TV Shows</a></li>
+            <li><a href="#">Most Popular TV Shows</a></li>
+            <li><a href="#">Browse TV Shows by Genre</a></li>
+            <li><a href="#">TV News</a></li>
+          </ul>
+        </div>
+
+        <!-- Celebs Section -->
+        <div class="menu-section">
+          <h3 class="menu-section-title">Celebs</h3>
+          <ul class="menu-list">
+            <li><a href="#">Born Today</a></li>
+            <li><a href="#">Most Popular Celebs</a></li>
+            <li><a href="#">Celebrity News</a></li>
+          </ul>
+        </div>
+
+        <!-- Watch Section -->
+        <div class="menu-section">
+          <h3 class="menu-section-title">Watch</h3>
+          <ul class="menu-list">
+            <li><a href="#">What to Watch</a></li>
+            <li><a href="#">Latest Trailers</a></li>
+            <li><a href="#">IMDb Originals</a></li>
+            <li><a href="#">IMDb Picks</a></li>
+            <li><a href="#">IMDb Podcasts</a></li>
+          </ul>
+        </div>
+
+        <!-- Awards & Events Section -->
+        <div class="menu-section">
+          <h3 class="menu-section-title">Awards & Events</h3>
+          <ul class="menu-list">
+            <li><a href="#">Oscars</a></li>
+            <li><a href="#">ABFF</a></li>
+            <li><a href="#">Comic-Con</a></li>
+            <li><a href="#">Emmy Awards</a></li>
+            <li><a href="#">Golden Globes</a></li>
+            <li><a href="#">Sundance Film Festival</a></li>
+            <li><a href="#">Awards Central</a></li>
+            <li><a href="#">Festival Central</a></li>
+            <li><a href="#">All Events</a></li>
+          </ul>
+        </div>
+
+        <!-- Community Section -->
+        <div class="menu-section">
+          <h3 class="menu-section-title">Community</h3>
+          <ul class="menu-list">
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Contributor Zone</a></li>
+            <li><a href="#">Polls</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- END MENU OVERLAY -->
+
+  <main id="main-content">
+
+    <div class="carouselDisplay">
+      <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="https://image.tmdb.org/t/p/original/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg" class="d-block w-100" alt="">
+
+            <div class="imdb-caption">
+              <button class="play-btn">
+                <i class="bi bi-play-fill"></i>
+              </button>
+
+              <div class="caption-text">
+                <h2>Deadpool & Wolverine</h2>
+                <p>Watch the Trailer</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item ">
+            <img src="https://image.tmdb.org/t/p/original/9n2tJBplPbgR2ca05hS5CKXwP2c.jpg" class="d-block w-100"
+              alt="Movie Image 3">
+            <div class="imdb-caption">
+              <button class="play-btn">
+                <i class="bi bi-play-fill"></i>
+              </button>
+
+              <div class="caption-text">
+                <h2>Supermario Dinos</h2>
+                <p>Watch the Trailer</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <img src="https://image.tmdb.org/t/p/original/rAiYTfKGqDCRIIqo664sY9XZIvQ.jpg" class="d-block w-100"
+              alt="Movie Image 2">
+            <div class="imdb-caption">
+              <button class="play-btn">
+                <i class="bi bi-play-fill"></i>
+              </button>
+
+              <div class="caption-text">
+                <h2>Interstellar</h2>
+                <p>Watch the Trailer</p>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </button>
+        </div>
+      </div>
+      <div class="upnext">
+        <div class="upNext-cards">
+          <!-- Movie 1 -->
+          <div class="upNext-movie-card">
+            <img src="https://image.tmdb.org/t/p/original/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg" alt="Deadpool & Wolverine">
+            <div class="upNext-info">
+              <h5>Deadpool & Wolverine</h5>
+              <p class="meta">2024 • 2h 7m • R</p>
+              <p class="desc">Deadpool teams up with Wolverine in a multiverse-shattering mission.</p>
+            </div>
+          </div>
+
+          <!-- Movie 2 -->
+          <div class="upNext-movie-card">
+            <img src="https://image.tmdb.org/t/p/original/9n2tJBplPbgR2ca05hS5CKXwP2c.jpg" alt="Another Movie">
+            <div class="upNext-info">
+              <h5>A Knight of the Seven Kingdoms</h5>
+              <p class="meta">2026 • 7 eps • TV-MA</p>
+              <p class="desc">A century before GOT, Ser Duncan the Tall wandered through Westeros.</p>
+            </div>
+          </div>
+          <div class="upNext-movie-card">
+            <img src="https://image.tmdb.org/t/p/original/9n2tJBplPbgR2ca05hS5CKXwP2c.jpg" alt="Another Movie">
+            <div class="upNext-info">
+              <h5>A Knight of the Seven Kingdoms</h5>
+              <p class="meta">2026 • 7 eps • TV-MA</p>
+              <p class="desc">A century before GOT, Ser Duncan the Tall wandered through Westeros.</p>
+            </div>
+          </div>
+
+          <!-- Browse trailers link -->
+          <h5 class="text-white">Browse trailers &gt;</h5>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="featured-today">
+      <h3 class="text-warning">Featured today </h3>
+      <div id="carouselExample2" class="carousel slide">
+
+        <div class="carousel-inner">
+
+
+          <div class="carousel-item active">
+            <div class="row">
+              <div class="col-6">
+                <img src="https://image.tmdb.org/t/p/original/rAiYTfKGqDCRIIqo664sY9XZIvQ.jpg" class="d-block w-100"
+                  alt="Superman 2025 Poster">
+                <div class="d-flex flex-column">
+                  <a href="#" class="captionList">Most anticipated movies</a>
+                  <a href="#">See the list</a>
+                </div>
+
+              </div>
+              <div class="col-6 img-wrapper">
+                <img src="https://image.tmdb.org/t/p/original/9n2tJBplPbgR2ca05hS5CKXwP2c.jpg" class="d-block w-100"
+                  alt="G20 2025 Poster">
+                <div class="d-flex flex-column">
+                  <a href="#" class="captionList">sunday specials</a>
+                  <a href="#">See the list</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="carousel-item">
+            <div class="row">
+              <div class="col-6">
+                <img src="https://image.tmdb.org/t/p/original/9n2tJBplPbgR2ca05hS5CKXwP2c.jpg" class="d-block w-100"
+                  alt="G20 2025 Poster">
+              </div>
+              <div class="col-6">
+                <img src="https://image.tmdb.org/t/p/original/rAiYTfKGqDCRIIqo664sY9XZIvQ.jpg" class="d-block w-100"
+                  alt="Superman 2025 Poster">
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+        <button class="carousel-control-prev featured-prev" type="button" data-bs-target="#carouselExample2"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+
+        <button class="carousel-control-next featured-next" type="button" data-bs-target="#carouselExample2"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+
+      </div>
+
+    </div>
+    <div class="celebrity" >
+      <h4 class="text-white section-title">Most popular celebrities</h4>
+      <div id="celebsCarousel" class="carousel slide" data-bs-ride="false">
+        <div class="carousel-inner">
+
+
+          <div class="carousel-item active">
+            <div class="d-flex justify-content-center gap-4 celeb-row">
+              <img src="https://randomuser.me/api/portraits/men/1.jpg" />
+              <img src="https://randomuser.me/api/portraits/women/2.jpg" />
+              <img src="https://randomuser.me/api/portraits/men/3.jpg" />
+              <img src="https://randomuser.me/api/portraits/women/4.jpg" />
+              <img src="https://randomuser.me/api/portraits/men/5.jpg" />
+              <img src="https://randomuser.me/api/portraits/women/6.jpg" />
+            </div>
+          </div>
+
+
+          <div class="carousel-item">
+            <div class="d-flex justify-content-center gap-4 celeb-row">
+              <img src="https://randomuser.me/api/portraits/men/7.jpg" />
+              <img src="https://randomuser.me/api/portraits/women/8.jpg" />
+              <img src="https://randomuser.me/api/portraits/men/9.jpg" />
+              <img src="https://randomuser.me/api/portraits/women/10.jpg" />
+              <img src="https://randomuser.me/api/portraits/men/11.jpg" />
+              <img src="https://randomuser.me/api/portraits/women/12.jpg" />
+            </div>
+          </div>
+
+        </div>
+
+
+        <button class="carousel-control-prev celeb-prev" type="button" data-bs-target="#celebsCarousel"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+
+        <button class="carousel-control-next celeb-next" type="button" data-bs-target="#celebsCarousel"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+
+    </div>
+
+    <div class="watching" id="top-movies">
+      <h4 class="text-white  section-title">Top movies Imdb in this week</h4>
+      <section class="top-titles">
+        <div class="top-grid">
+
+          <div class="top-card">
+            <span class="rank">#1</span>
+
+            <img src="https://image.tmdb.org/t/p/original/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg" alt="The Rip">
+
+            <div class="card-info">
+              <h4>The Rip</h4>
+              <p class="meta">2026 • 1h 53m • R</p>
+
+              <p class="rating">
+                ⭐ 6.8 <span>(71K)</span> &nbsp; ⭐ Rate
+              </p>
+
+              <p class="desc">
+                A group of Miami cops discovers a stash of millions in cash,
+                leading to distrust as outsiders learn about the huge seizure.
+              </p>
+
+              <a href="#" class="watched">
+                👁 Mark as watched
+              </a>
+            </div>
+          </div>
+
+          <div class="top-card">
+            <span class="rank">#2</span>
+            <img src="https://image.tmdb.org/t/p/original/9n2tJBplPbgR2ca05hS5CKXwP2c.jpg">
+            <div class="card-info">
+              <h4>A Knight of the Seven Kingdoms</h4>
+              <p class="meta">2026 • 7 eps • TV-MA</p>
+              <p class="rating">⭐ 8.3 <span>(13K)</span></p>
+              <p class="desc">
+                A century before GOT, Ser Duncan the Tall wandered through Westeros.
+              </p>
+              <a class="watched">👁 Mark as watched</a>
+            </div>
+          </div>
+
+          <div class="top-card">
+            <span class="rank">#3</span>
+            <img src="https://image.tmdb.org/t/p/original/rAiYTfKGqDCRIIqo664sY9XZIvQ.jpg">
+            <div class="card-info">
+              <h4>Sinners</h4>
+              <p class="meta">2025 • 2h 17m • R</p>
+              <p class="rating">⭐ 7.5 <span>(373K)</span></p>
+              <p class="desc">
+                Twin brothers return to their hometown only to face greater evil.
+              </p>
+              <a class="watched">👁 Mark as watched</a>
+            </div>
+
+          </div>
+          <div class="top-card">
+            <span class="rank">#4</span>
+            <img src="https://image.tmdb.org/t/p/original/4Y1WNkd88JXmGfhtWR7dmDAo1T2.jpg">
+            <div class="card-info">
+              <h4>Dune: Part Two</h4>
+              <p class="meta">2024 • 2h 46m • PG-13</p>
+              <p class="rating">⭐ 8.6 <span>(520K)</span></p>
+              <p class="desc">
+                Paul Atreides unites with the Fremen while seeking revenge against conspirators.
+              </p>
+              <a class="watched">👁 Mark as watched</a>
+            </div>
+          </div>
+
+          <div class="top-card">
+            <span class="rank">#5</span>
+            <img src="https://image.tmdb.org/t/p/original/8RGbpyk3SMw4V3lEzX6z6hDkGzE.jpg">
+            <div class="card-info">
+              <h4>Deadpool & Wolverine</h4>
+              <p class="meta">2024 • 2h 7m • R</p>
+              <p class="rating">⭐ 8.1 <span>(410K)</span></p>
+              <p class="desc">
+                Deadpool teams up with Wolverine in a multiverse-shattering mission.
+              </p>
+              <a class="watched">👁 Mark as watched</a>
+            </div>
+          </div>
+
+          <div class="top-card">
+            <span class="rank">#6</span>
+            <img src="https://image.tmdb.org/t/p/original/qhb1qOilapbapxWQn9jtRCMwXJF.jpg">
+            <div class="card-info">
+              <h4>Oppenheimer</h4>
+              <p class="meta">2023 • 3h • R</p>
+              <p class="rating">⭐ 8.4 <span>(2.1M)</span></p>
+              <p class="desc">
+                The story of J. Robert Oppenheimer and the creation of the atomic bomb.
+              </p>
+              <a class="watched">👁 Mark as watched</a>
+            </div>
+          </div>
+
+          <div class="top-card">
+            <span class="rank">#7</span>
+            <img src="https://image.tmdb.org/t/p/original/3bhkrj58Vtu7enYsRolD1fZdja1.jpg">
+            <div class="card-info">
+              <h4>The Batman</h4>
+              <p class="meta">2022 • 2h 56m • PG-13</p>
+              <p class="rating">⭐ 7.8 <span>(1.6M)</span></p>
+              <p class="desc">
+                Batman uncovers corruption in Gotham while pursuing the Riddler.
+              </p>
+              <a class="watched">👁 Mark as watched</a>
+            </div>
+          </div>
+
+          <div class="top-card">
+            <span class="rank">#8</span>
+            <img src="https://image.tmdb.org/t/p/original/5GA3vV1aWWHTSDO5eno8V5zDo8r.jpg">
+            <div class="card-info">
+              <h4>Avengers: Endgame</h4>
+              <p class="meta">2019 • 3h 1m • PG-13</p>
+              <p class="rating">⭐ 8.4 <span>(2.3M)</span></p>
+              <p class="desc">
+                The Avengers assemble once more to reverse Thanos' actions.
+              </p>
+              <a class="watched">👁 Mark as watched</a>
+            </div>
+          </div>
+
+          <div class="top-card">
+            <span class="rank">#9</span>
+            <img src="https://image.tmdb.org/t/p/original/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg">
+            <div class="card-info">
+              <h4>Wonder Woman</h4>
+              <p class="meta">2017 • 2h 21m • PG-13</p>
+              <p class="rating">⭐ 7.4 <span>(680K)</span></p>
+              <p class="desc">
+                An Amazonian warrior leaves her home to end World War I.
+              </p>
+              <a class="watched">👁 Mark as watched</a>
+            </div>
+          </div>
+
+          <div class="top-card">
+            <span class="rank">#10</span>
+            <img src="https://image.tmdb.org/t/p/original/kOVEVeg59E0wsnXmF9nrh6OmWII.jpg">
+            <div class="card-info">
+              <h4>Spider-Man: No Way Home</h4>
+              <p class="meta">2021 • 2h 28m • PG-13</p>
+              <p class="rating">⭐ 8.2 <span>(1.9M)</span></p>
+              <p class="desc">
+                Spider-Man faces multiverse chaos when identities are revealed.
+              </p>
+              <a class="watched">👁 Mark as watched</a>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </div>
+    </div>
+  </main>
+  <footer class="imdb-footer">
+    <button class="signin-btn" onclick="loadSignIn()">Sign in for more access</button>
+
+    <div class="footer-cards">
+      <div class="footer-card">
+        <h4>Follow IMDb on social</h4>
+        <div class="social-icons">
+          <i class="bi bi-tiktok"></i>
+          <i class="bi bi-instagram"></i>
+          <i class="bi bi-twitter-x"></i>
+          <i class="bi bi-youtube"></i>
+          <i class="bi bi-facebook"></i>
+        </div>
+      </div>
+
+      <div class="footer-card app-card">
+        <div>
+          <h4>Get the IMDb App</h4>
+          <p>For Android and iOS</p>
+        </div>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=90x90&data=https://www.imdb.com/app" alt="QR">
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <a href="#">Help ↗</a>
+      <a href="#">Site Index ↗</a>
+      <a href="#">IMDbPro ↗</a>
+      <a href="#">Box Office Mojo ↗</a>
+      <a href="#">License IMDb Data ↗</a>
+      <a href="#">Press Room</a>
+      <a href="#">Advertising ↗</a>
+      <a href="#">Jobs ↗</a>
+      <a href="#">Conditions of Use</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Your Ads Privacy Choices</a>
+    </div>
+
+    <p class="amazon">an <strong>amazon</strong> company</p>
+    <p class="copyright">© 1990-2026 by IMDb.com, Inc.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="index.js"></script>
+</body>
+
+</html>
