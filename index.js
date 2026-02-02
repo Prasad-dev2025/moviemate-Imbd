@@ -49,6 +49,8 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener('popstate', (e) => {
     if (e.state && e.state.page === 'signin') {
       loadSignIn(false);
+    } else if (e.state && e.state.page === 'createaccount') {
+      handleCreateAccount(false);
     } else {
       loadHomePage(false);
     }
@@ -81,13 +83,11 @@ function closeMenu() {
   }
 }
 
-
 function goHomeHistory() {
   closeMenu();
   history.pushState({ page: 'home' }, '', '/');
   loadHomePage(false);
 }
-
 
 function loadSignIn(pushState = true) {
   const mainContent = document.getElementById("main-content");
@@ -116,6 +116,42 @@ function loadSignIn(pushState = true) {
       mainContent.innerHTML = `
         <div class="container text-center py-5">
           <h2 class="text-danger">Error loading sign-in page</h2>
+          <p>Please try again later.</p>
+          <button class="btn btn-warning" onclick="loadHomePage()">Go Back</button>
+        </div>
+      `;
+    });
+}
+
+// Handle Create Account button
+function handleCreateAccount(pushState = true) {
+  const mainContent = document.getElementById("main-content");
+  
+  console.log('Creating account...');
+  
+  fetch("createAccount-form.html")
+    .then(res => res.text())
+    .then(html => {
+      mainContent.innerHTML = html;
+      mainContent.style.backgroundColor = "#f5f5f5";
+      mainContent.style.minHeight = "100vh";
+      
+      // Push state to history
+      if (pushState) {
+        history.pushState({ page: 'createaccount' }, '', '#createaccount');
+      }
+      
+      // Scroll to top
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    })
+    .catch(err => {
+      console.error("Fetch error:", err);
+      mainContent.innerHTML = `
+        <div class="container text-center py-5">
+          <h2 class="text-danger">Error loading create account page</h2>
           <p>Please try again later.</p>
           <button class="btn btn-warning" onclick="loadHomePage()">Go Back</button>
         </div>
